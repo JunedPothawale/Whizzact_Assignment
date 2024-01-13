@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UsersExport;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
+    public function exportExcel(){
+        return Excel::download(new UsersExport, 'users.xlsx');
+    }
     public function updateUser(Request $request, User $user)
     {
         if ($request->method() == 'GET') {

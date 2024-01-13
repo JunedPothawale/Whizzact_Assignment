@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/user/delete/{id}', [UserController::class,'deleteUser']);
     Route::get('/dashboard/user/update', [UserController::class,'updateUser']);
     Route::post('/dashboard/user/update/{id}', [UserController::class,'updateUser'])->name('updatePost');
+    Route::get('/dashboard/user/export', [UserController::class, 'exportExcel']);
 });
 
 
